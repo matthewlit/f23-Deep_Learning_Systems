@@ -1,7 +1,6 @@
-import dataset
+import preprocess
 import tensorflow as tf
 from keras import layers, losses
-from sklearn import preprocessing
 
 """
 Convolutional Neural Network for Song Genre Classification Based on Spotify API Data
@@ -10,7 +9,7 @@ Convolutional Neural Network for Song Genre Classification Based on Spotify API 
 def cnn():
     #Preprocess dataset for CNN
     print("Preprocessing...")
-    trainx, testx, trainy, testy = preprocess()
+    trainx, testx, trainy, testy = preprocess.getData()
 
     #Implement CNN model
     print("Building Model...")
@@ -31,7 +30,6 @@ def cnn():
     ])
 
     model.compile(optimizer='Adam', loss=losses.CategoricalCrossentropy(), metrics=['accuracy'])
-    model.summary()
 
     print("\nTraining...")
     model.fit(trainx, trainy, epochs=8)
@@ -40,20 +38,6 @@ def cnn():
     print("\nTesting...")
     results = model.evaluate(testx, testy)
     print("Results [Loss, Accuracy]: ", results)
-
-
-#Preprocess dataset for CNN
-def preprocess():
-    #Get train and test dataset
-    trainx, testx, trainy, testy = dataset.getData()
-
-    #Encode categorical features
-    enc = preprocessing.OneHotEncoder()
-    trainy = enc.fit_transform(trainy).toarray()
-    testy = enc.fit_transform(testy).toarray()
-
-    return  trainx, testx, trainy, testy
-
 
 if __name__ == '__main__':
     cnn()

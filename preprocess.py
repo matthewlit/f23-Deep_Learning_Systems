@@ -1,6 +1,8 @@
+from locale import normalize
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
 
 """
 Imports data from spotify_songs.csv and splits desired data into train and test sets
@@ -16,11 +18,22 @@ def getData():
         data[["danceability", "energy" ,"key", "mode" ,"speechiness" ,"acousticness" ,"instrumentalness" ,"liveness" ,"valence" ,"tempo", "duration_ms"]], 
         data[["playlist_genre"]], 
         test_size=0.2)
-    
+
+    #Convert to numpy arrays
     trainx = trainx.to_numpy()
     testx = testx.to_numpy()
     trainy = trainy.to_numpy()
     testy = testy.to_numpy()
+
+    #Scale data
+    scaler = preprocessing.StandardScaler()
+    trainx = scaler.fit_transform(trainx)
+    testx = scaler.fit_transform(testx)
+
+    #Encode categorical features
+    enc = preprocessing.OneHotEncoder()
+    trainy = enc.fit_transform(trainy).toarray()
+    testy = enc.fit_transform(testy).toarray()
 
     return trainx, testx, trainy, testy
 

@@ -1,1 +1,15 @@
+Preprocessing:
+https://scikit-learn.org/stable/modules/preprocessing.html 
 
+Build CNN:
+https://www.tensorflow.org/tutorials/images/cnn
+https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv1D 
+
+Build RNN:
+https://www.tensorflow.org/guide/keras/working_with_rnns
+https://www.tensorflow.org/text/tutorials/text_classification_rnn#create_the_model 
+https://jonathan-hui.medium.com/tensorflow-rnn-models-9fdd3ecc6a3d 
+
+Compile and Test:
+https://www.tensorflow.org/guide/keras/training_with_built_in_methods
+https://www.tensorflow.org/api_docs/python/tf/keras/losses 

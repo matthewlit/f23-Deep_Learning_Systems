@@ -16,3 +16,10 @@ https://www.tensorflow.org/api_docs/python/tf/keras/losses
 
 Audio Dataset:
 https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification
+
+CNN for Audio:
+https://www.youtube.com/watch?v=dOG-HxpbMSw&list=PL-wATfeyAMNrtbkCNsLcpoAyBBRJZVlnf&index=17
+
+RNN for Audio:
+https://www.youtube.com/watch?v=4nXI0h2sq2I&list=PL-wATfeyAMNrtbkCNsLcpoAyBBRJZVlnf&index=20&t=775s
+

@@ -3,7 +3,7 @@ import os
 import math
 import librosa 
 
-DATASET_PATH = "genres_original"
+DATASET_PATH = "Audio_Dataset"
 JSON_PATH = "mfcc_dataset.json"
 SAMPLE_RATE = 22050
 TRACK_DURATION = 30 

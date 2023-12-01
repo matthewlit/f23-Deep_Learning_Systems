@@ -10,7 +10,7 @@ Imports data from spotify_songs.csv and splits desired data into train and test 
 
 def getData():
     #Import csv and get desired columns  
-    data = pd.read_csv('spotify_songs.csv', sep=',')
+    data = pd.read_csv('Spotify_Songs_Dataset.csv', sep=',')
     data = data[["danceability", "energy" ,"key", "mode" ,"speechiness" ,"acousticness" ,"instrumentalness" ,"liveness" ,"valence" ,"tempo" , "duration_ms", "playlist_genre"]]
 
     #Split into train and test

@@ -1,22 +1,20 @@
-import preprocess
+import Spotify_Preprocess
 import tensorflow as tf
 from keras import layers, losses
 
 """
 Recurrent Neural Network for Song Genre Classification Based on Spotify API Data
+HIGH: 53% 
 """
 
 def rnn():
     #Preprocess dataset for RNN
     print("\nPreprocessing...")
-    trainx, testx, trainy, testy = preprocess.getData()
+    trainx, testx, trainy, testy = Spotify_Preprocess.getData()
 
     #Implement RNN model
     print("\nBuilding Model...")
     input_shape = (trainx.shape[1],1)
-
-    # TODO: Find best layer architecture for highest accuracy 
-    # HIGH: 53% 
     model = tf.keras.Sequential([
         layers.Bidirectional(layers.GRU(64, activation='relu', return_sequences=True), input_shape=input_shape),
         layers.Bidirectional(layers.GRU(128)),
@@ -24,12 +22,14 @@ def rnn():
         layers.Dense(6, activation='softmax')
     ])
 
+    #Compile RNN model
     model.compile(optimizer='Adam', loss=losses.CategoricalCrossentropy(), metrics=['accuracy'])
 
+    #Train RNN model
     print("\nTraining...")
     model.fit(trainx, trainy, epochs=8)
 
-    #Test RNN
+    #Test RNN model
     print("\nTesting...")
     results = model.evaluate(testx, testy)
     print("\nResults [Loss, Accuracy]: ", results)
